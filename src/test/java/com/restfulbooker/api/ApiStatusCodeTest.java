@@ -11,7 +11,7 @@ import io.restassured.response.Response;
 import org.approvaltests.Approvals;
 import org.junit.jupiter.api.Test;
 
-public class ApiStatusCodeTest {
+public class ApiStatusCodeTest extends BaseTest {
 
     @Test
     public void getBookingShouldReturn200() {

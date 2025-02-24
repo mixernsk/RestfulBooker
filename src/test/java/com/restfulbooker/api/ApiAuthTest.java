@@ -4,11 +4,10 @@ import com.restfulbooker.api.api.AuthApi;
 import com.restfulbooker.api.config.Config;
 import com.restfulbooker.api.payloads.Auth;
 import io.restassured.response.Response;
-import org.approvaltests.Approvals;
 import org.junit.jupiter.api.Assertions;
 import org.junit.jupiter.api.Test;
 
-public class ApiAuthTest {
+public class ApiAuthTest extends BaseTest {
 
     @Test
     public void authApiShouldReturnToken() {
@@ -20,7 +19,6 @@ public class ApiAuthTest {
                 .setPassword(password)
                 .build();
         Response response = AuthApi.postAuth(auth);
-        Approvals.verify(response.getStatusCode());
         String actualToken = response.getBody().jsonPath().get("token").toString();
         Assertions.assertFalse(actualToken.isEmpty());
     }

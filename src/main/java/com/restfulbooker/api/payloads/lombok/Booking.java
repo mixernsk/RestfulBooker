@@ -5,7 +5,7 @@ import lombok.*;
 
 import java.util.Objects;
 
-@Builder
+@Builder(toBuilder = true)
 @Getter
 @Setter
 @Data

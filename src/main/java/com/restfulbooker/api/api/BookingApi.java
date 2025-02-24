@@ -14,7 +14,7 @@ public class BookingApi extends BaseApi {
 
     private static final String apiUrl = baseUrl + "booking/";
 
-    public static Response getBookings(){
+    public static Response getBookings() {
         return given()
                 .filters(List.of(new RequestLoggingFilter(), new ResponseLoggingFilter()))
                 .get(apiUrl);
@@ -34,6 +34,16 @@ public class BookingApi extends BaseApi {
                 .when()
                 .filters(List.of(new RequestLoggingFilter(), new ResponseLoggingFilter()))
                 .post(apiUrl);
+    }
+
+    public static Response updateBooking(int id, Booking payload, String token) {
+        return given()
+                .cookie("token", token)
+                .contentType(ContentType.JSON)
+                .body(payload)
+                .when()
+                .filters(List.of(new RequestLoggingFilter(), new ResponseLoggingFilter()))
+                .put(apiUrl + id);
     }
 
     public static Response deleteBooking(int id, String tokenValue) {
